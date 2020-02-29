@@ -1,0 +1,12 @@
+body {
+  // @include font-family(serif);
+  overflow-x: hidden;
+  color: $black;
+}
+main {
+  outline: none;
+}
+h1 {
+  font-size: $h1-font-size;
+  color: $black;
+}

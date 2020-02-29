@@ -1,0 +1,379 @@
+<template>
+  <div id="app">
+    <div
+      id="offCanvas"
+      class="multilevel-offcanvas mobile-off-canvas-menu off-canvas position-right"
+      data-auto-focus="false"
+      data-off-canvas
+      aria-lavel="Mobile menu"
+    >
+      <button
+        class="close-button"
+        aria-label="Close menu"
+        type="button"
+        data-close
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul
+        id="drillDown"
+        class="mobile-menu vertical menu"
+        data-drilldown
+        data-close
+        data-submenu-toggle="true"
+        data-parent-link="false"
+        data-scroll-top="true"
+      >
+        <li>
+          <router-link to="/" exact>
+            Home
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/reveal" exact>
+            Reveal
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/slider" exact>
+            Slider
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/tooltip" exact>
+            Tooltip
+          </router-link>
+        </li>
+        <li class="is-drilldown-submenu-parent" data-open>
+          <a>Various Menus</a>
+          <ul class="vertical nested menu">
+            <li>
+              <router-link to="/dropdown-menu" exact data-close>
+                Dropdown Menu
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/drilldown-menu" exact data-close>
+                Drilldown Menu
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/accordion-menu" exact data-close>
+                Accordion Menu
+              </router-link>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <router-link to="/magellan" exact>
+            Magellan
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/accordion" exact>
+            Accordion
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/dropdown" exact>
+            Dropdown
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/tabs" exact>
+            Tabs
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/orbit" exact>
+            Orbit
+          </router-link>
+        </li>
+      </ul>
+    </div>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <div class="grid-y medium-grid-frame">
+        <div class="cell auto">
+          <div class="grid-container full" data-sticky-container>
+            <header
+              id="mainNav"
+              class="site-header sticky"
+              data-sticky
+              data-margin-top="0"
+              style="width: 100%;"
+              data-sticky-on="small"
+            >
+              <section
+                class="site-title-bar title-bar"
+                aria-label="Mobile navigation"
+                data-hide-for="medium"
+                tabindex="-1"
+              >
+                <div class="title-bar-left">
+                  <a href="/">Vuedation</a>
+                </div>
+                <div class="title-bar-right">
+                  <button
+                    class="menu-icon"
+                    type="button"
+                    data-open="offCanvas"
+                  ></button>
+                </div>
+              </section>
+              <section
+                class="site-navigation top-bar"
+                aria-label="Site navigation"
+              >
+                <div class="top-bar-left">
+                  <div class="site-desktop-title top-bar-title">
+                    <a href="/" rel="home" data-smooth-scroll>
+                      <img src="/logo.png" alt="vuedation" />
+                      <span>Vuedation</span>
+                    </a>
+                  </div>
+                </div>
+                <nav class="top-bar-left" aria-label="Main menu" tabindex="-1">
+                  <ul
+                    id="dropDown"
+                    class="dropdown menu desktop-menu"
+                    data-dropdown-menu
+                  >
+                    <li>
+                      <router-link to="/" exact>
+                        Home
+                      </router-link>
+                    </li>
+                    <li>
+                      <router-link to="/reveal" exact>
+                        Reveal
+                      </router-link>
+                    </li>
+                    <li>
+                      <router-link to="/slider" exact>
+                        Slider
+                      </router-link>
+                    </li>
+                    <li>
+                      <router-link to="/tooltip" exact>
+                        Tooltip
+                      </router-link>
+                    </li>
+                    <li class="is-dropdown-submenu-parent">
+                      <a>Various Menus</a>
+                      <ul class="vertical dropdown menu">
+                        <li>
+                          <router-link to="/dropdown-menu" exact>
+                            Dropdown Menu
+                          </router-link>
+                        </li>
+                        <li>
+                          <router-link to="/drilldown-menu" exact>
+                            Drilldown Menu
+                          </router-link>
+                        </li>
+                        <li>
+                          <router-link to="/accordion-menu" exact>
+                            Accordion Menu
+                          </router-link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <router-link to="/magellan" exact>
+                        Magellan
+                      </router-link>
+                    </li>
+                    <li>
+                      <router-link to="/accordion" exact>
+                        Accordion
+                      </router-link>
+                    </li>
+                    <li>
+                      <router-link to="/dropdown" exact>
+                        Dropdown
+                      </router-link>
+                    </li>
+                    <li>
+                      <router-link to="/tabs" exact>
+                        Tabs
+                      </router-link>
+                    </li>
+                    <li>
+                      <router-link to="/orbit" exact>
+                        Orbit
+                      </router-link>
+                    </li>
+                  </ul>
+                </nav>
+              </section>
+            </header>
+          </div>
+        </div>
+        <div class="cell medium-auto skip">
+          <div class="grid-x">
+            <div class="cell medium-cell-block-y">
+              <div class="main-container">
+                <div class="main-grid">
+                  <main class="main-content-full-width">
+                    <router-view />
+                  </main>
+                </div>
+              </div>
+              <div id="top"></div>
+              <div id="content-top"></div>
+            </div>
+          </div>
+        </div>
+        <div class="cell shrink">
+          <div class="back-to-top-sticky hide-for-print" data-sticky-container>
+            <div
+              id="backtotop"
+              class="back-to-top"
+              data-sticky
+              data-stick-to="bottom"
+              data-sticky-on="small"
+              data-top-anchor="content-top:top"
+              data-btm-anchor="footer:top"
+              data-margin-bottom="0"
+            >
+              <div class="grid-container">
+                <div
+                  class="back-to-top-grid grid-x align-right"
+                  data-smooth-scroll
+                >
+                  <a v-scroll-to="'#mainNav'" href="#">
+                    <span
+                      class="button-tooltip"
+                      data-show-on="medium"
+                      data-tooltip
+                      data-click-open="false"
+                      data-position="top"
+                      data-alignment="right"
+                      title="Back to Top"
+                    >
+                      <svg
+                        id="back_to_top"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="34px"
+                        height="34px"
+                        viewBox="0 0 88 56"
+                      >
+                        <title :id="UP" lang="en">{{ Up }}</title>
+                        <path
+                          id="bk"
+                          fill="#1779ba"
+                          d="M86.9419643,11.328125 C86.9419643,9.35639881 86.2537202,7.68229167 84.8772321,6.30580357 L80.6919643,2.12053571 C79.2782738,0.706845238 77.5855655,0 75.6138393,0 C73.6049107,0 71.9308036,0.706845238 70.5915179,2.12053571 L43.4709821,29.1852679 L16.3504464,2.12053571 C15.0111607,0.706845238 13.3370536,0 11.328125,0 C9.31919643,0 7.64508929,0.706845238 6.30580357,2.12053571 L2.12053571,6.30580357 C0.706845238,7.64508929 0,9.31919643 0,11.328125 C0,13.2998512 0.706845238,14.9925595 2.12053571,16.40625 L38.4486607,52.734375 C39.8251488,54.1108631 41.499256,54.7991071 43.4709821,54.7991071 C45.405506,54.7991071 47.0982143,54.1108631 48.5491071,52.734375 L84.8214286,16.40625 C86.235119,14.9925595 86.9419643,13.2998512 86.9419643,11.328125 Z"
+                          transform="matrix(1 0 0 -1 .771 55.389)"
+                        />
+                      </svg>
+                      <span class="show-for-sr">Back to top</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <footer id="footer" class="footer">
+              <div class="section-spacing">
+                <div class="grid-container">
+                  <div
+                    class="grid-x grid-padding-x grid-padding-y align-center-middle"
+                  >
+                    <div class="cell medium-shrink medium-order-2">
+                      <nav aria-label="Privacy menu"></nav>
+                    </div>
+                    <div
+                      class="cell medium-auto medium-offset-1 text-center medium-order-1"
+                    >
+                      <p>&copy;{{ year }} nuxtation project.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+let now = new Date()
+let year = now.getFullYear()
+import Vue from 'vue'
+import VueScrollTo from 'vue-scrollto'
+Vue.use(VueScrollTo)
+export default {
+  name: 'App',
+  props: {
+    iconName: {
+      type: String,
+      default: 'box',
+    },
+    iconColor: {
+      type: String,
+      default: 'currentColor',
+    },
+  },
+  data() {
+    return {
+      year,
+    }
+  },
+  // computed: {
+  //   fas() {
+  //     return fas
+  //   },
+  //   faArrowCircleUp() {
+  //     return faArrowCircleUp
+  //   },
+  // },
+  mounted() {
+    this.offCanvas = new Foundation.OffCanvas($('#offCanvas'))
+    this.dropDown = new Foundation.DropdownMenu($('#dropDown'))
+    this.drillDown = new Foundation.Drilldown($('#drillDown'), {
+      // These options can be declarative using the data attributes
+      animationDuration: 1500,
+    })
+    this.sticky = new Foundation.Sticky($('#mainNav'))
+  },
+  destroyed() {
+    this.drillDown.destroy()
+  },
+}
+</script>
+
+<style lang="scss">
+.grid-y {
+  height: 100vh;
+  // min-height: 89vh;
+  // // margin-top: 3rem;
+  // @include breakpoint(medium) {
+  //   min-height: 80vh;
+  // }
+}
+.skip {
+  // margin-top: -30rem;
+  overflow: auto;
+
+  // min-height: 90vh;
+  // @include breakpoint(medium) {
+  //   min-height: 83vh;
+  // }
+}
+main {
+  @include vertical-center;
+}
+svg.icon {
+  fill: currentColor;
+}
+.ikonate {
+  fill: none;
+}
+.ikonate-red {
+  stroke: $primary-color;
+}
+</style>

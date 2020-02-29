@@ -1,0 +1,76 @@
+module.exports = {
+  env: {
+    browser: true,
+    node: true,
+    jquery: true,
+    commonjs: true,
+    es6: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/essential',
+    // "plugin:prettier/recommended",
+    // "prettier/vue"
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+    Foundation: true,
+    whatInput: true,
+    $: true,
+    _: true,
+  },
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: 'babel-eslint',
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    allowImportExportEverywhere: false,
+    ecmaFeatures: {
+      globalReturn: true,
+      impliedStrict: true,
+      jsx: true,
+    },
+  },
+  plugins: ['vue'],
+  rules: {
+    'vue/html-self-closing': 0,
+    'vue/max-attributes-per-line': 0,
+    'vue/name-property-casing': 0,
+    // "vue/name-property-casing": ["error", "PascalCase"],
+    'vue/this-in-template': 0,
+    // タグの最後で改行しないで
+    'vue/html-closing-bracket-newline': [2, { multiline: 'never' }],
+    // 不要なカッコは消す
+    'no-extra-parens': 1,
+    // 無駄なスペースは削除
+    'no-multi-spaces': 2,
+    // 不要な空白行は削除。2行開けてたらエラー
+    'no-multiple-empty-lines': ['warn', { max: 1 }],
+    // 関数とカッコはあけない(function hoge() {/** */})
+    'func-call-spacing': [2, 'never'],
+    // true/falseを無駄に使うな
+    'no-unneeded-ternary': 2,
+    // セミコロンは禁止
+    semi: [2, 'never'],
+    // 文字列はシングルクオートのみ
+    quotes: [2, 'single'],
+    // varは禁止
+    'no-var': 2,
+    // jsのインデントは２
+    indent: [2, 2],
+    // かっこの中はスペースなし！違和感
+    'space-in-parens': [2, 'never'],
+    // コンソールは許可
+    'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
+    // カンマの前後にスペース入れる？
+    'comma-spacing': 2,
+    // 配列のindexには空白入れるな(hogehoge[ x ])
+    'computed-property-spacing': 2,
+    // キーワードの前後には適切なスペースを
+    'keyword-spacing': 2,
+    'vue/valid-v-on': 1,
+    'import/no-named-as-default': 0,
+    // "no-unused-vars": 0
+  },
+}
