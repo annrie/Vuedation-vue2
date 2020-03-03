@@ -16561,9 +16561,16 @@ typescript@^3.2.1:
   languageName: node
   linkType: hard
 
-"vue-webpack4-babel7@workspace:.":
+"vue@npm:^2.6.11":
+  version: 2.6.11
+  resolution: "vue@npm:2.6.11"
+  checksum: 2/ba12fa9632c3fa4e46eec0fffeb6ec03fae6eb999bf502628e0e1c4312a3f5ed62e34378b80a4f21c00fe20d772435f56e87f7c0ee761b47cb2999fb6f7fb722
+  languageName: node
+  linkType: hard
+
+"vuedation@workspace:.":
   version: 0.0.0-use.local
-  resolution: "vue-webpack4-babel7@workspace:."
+  resolution: "vuedation@workspace:."
   dependencies:
     "@babel/cli": ^7.8.3
     "@babel/core": ^7.8.3
@@ -16655,13 +16662,6 @@ typescript@^3.2.1:
     yarn: ^1.21.1
   languageName: unknown
   linkType: soft
-
-"vue@npm:^2.6.11":
-  version: 2.6.11
-  resolution: "vue@npm:2.6.11"
-  checksum: 2/ba12fa9632c3fa4e46eec0fffeb6ec03fae6eb999bf502628e0e1c4312a3f5ed62e34378b80a4f21c00fe20d772435f56e87f7c0ee761b47cb2999fb6f7fb722
-  languageName: node
-  linkType: hard
 
 "vuex@npm:^3.1.2":
   version: 3.1.2
