@@ -12,7 +12,7 @@ package-lock.json
 # Yarn2
 .yarn/cache
 .yarn/unplugged
-.yarn/build-state.yml
+.yarn/build-state*.yml
 .pnp.*
 
 # Editor directories and files
