@@ -20,6 +20,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "add": "^2.0.6",
     "foundation-sites": "^6.6.1",
+    "husky": "^4.2.3",
     "ikonate": "^1.1.1",
     "jquery": "^3.4.1",
     "motion-ui": "^2.0.3",
