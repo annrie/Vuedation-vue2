@@ -3622,6 +3622,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bindings@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "bindings@npm:1.5.0"
+  dependencies:
+    file-uri-to-path: 1.0.0
+  checksum: 2/bd623dec58f126eb0c30f04a20da7080f06cdd5af26bf5a91615e70055fbba66c4cec5c88b156e8181c1d822f2392034a40a9121ef3ebc25638dc2163332b12d
+  languageName: node
+  linkType: hard
+
 "block-stream@npm:*":
   version: 0.0.9
   resolution: "block-stream@npm:0.0.9"
@@ -6981,6 +6990,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-uri-to-path@npm:1.0.0":
+  version: 1.0.0
+  resolution: "file-uri-to-path@npm:1.0.0"
+  checksum: 2/5ddb9682f04f6f87b7765b93306206db2f96bc86162487e27639c55fe3ffeed12c30906ef1dedaa5307d7cabbbbdcbfa299b79aaec435de0f17e17ab31bd20b3
+  languageName: node
+  linkType: hard
+
 "filesize@npm:^3.6.1":
   version: 3.6.1
   resolution: "filesize@npm:3.6.1"
@@ -7297,23 +7313,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@npm:1.2.9":
-  version: 1.2.9
-  resolution: "fsevents@npm:1.2.9"
+"fsevents@npm:1.2.11":
+  version: 1.2.11
+  resolution: "fsevents@npm:1.2.11"
   dependencies:
+    bindings: ^1.5.0
     nan: ^2.12.1
-    node-pre-gyp: ^0.12.0
-  checksum: 2/50f56363fcfe256e21abf9bbbbafa16c462aba768efaca55cdd8c45b59c522ab771b190891354664b47f05e8a342da0bb0bd44bb1222bd8cf1edbea2e6943b88
+    node-gyp: latest
+    node-pre-gyp: "*"
+  checksum: 2/aed1040495a4751298fa2df107fe387efd71d4b4dbc31e3044e86192318cccbca38481a9ad8a069aa24f42fdc6d793a04dc93bab4227178e58f9c9f76e3824ed
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@npm%3A1.2.9#builtin<compat/fsevents>":
-  version: 1.2.9
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.9#builtin<compat/fsevents>::version=1.2.9&hash=77dfe6"
+"fsevents@patch:fsevents@npm%3A1.2.11#builtin<compat/fsevents>":
+  version: 1.2.11
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.11#builtin<compat/fsevents>::version=1.2.11&hash=77dfe6"
   dependencies:
+    bindings: ^1.5.0
     nan: ^2.12.1
-    node-pre-gyp: ^0.12.0
-  checksum: 2/921b56d65896690a4768945795d26917bd88677a0c184035cd8d457b47d2cd81ec86f5556e9eac48652b54b9bf2c1936b566ed3e29a51febb30cef3287dac71f
+    node-gyp: latest
+    node-pre-gyp: "*"
+  checksum: 2/bed0c750c8ed79e28fb83283e6a059c50d0f522fa20267476ce8b905ea6b4e89dbe16ad23ab019527fef694c339a391baedf04fd5b521eb150ffaeab6d199049
   languageName: node
   linkType: hard
 
@@ -11034,9 +11054,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-pre-gyp@npm:^0.12.0":
-  version: 0.12.0
-  resolution: "node-pre-gyp@npm:0.12.0"
+"node-pre-gyp@npm:*":
+  version: 0.14.0
+  resolution: "node-pre-gyp@npm:0.14.0"
   dependencies:
     detect-libc: ^1.0.2
     mkdirp: ^0.5.1
@@ -11047,10 +11067,10 @@ __metadata:
     rc: ^1.2.7
     rimraf: ^2.6.1
     semver: ^5.3.0
-    tar: ^4
+    tar: ^4.4.2
   bin:
     node-pre-gyp: ./bin/node-pre-gyp
-  checksum: 2/d7cfe3c376280a7643aa3669d042592357d52b6af9a75e441dada2d71cf11c88b6fed82294b66e4773eb8b77e70be1aa008dde999e097d47e8d0aff1c3aa0b96
+  checksum: 2/04dfb46fa5a0ad300ed894fbf293105ff98b190c26c5200b0f87da46e643ff9ebaf7a54c4079370d345f135f2016e164d7a20b09a4e9bd9c48236b350372a01e
   languageName: node
   linkType: hard
 
@@ -15451,7 +15471,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"tar@npm:^4, tar@npm:^4.4.12":
+"tar@npm:^4.4.12, tar@npm:^4.4.2":
   version: 4.4.13
   resolution: "tar@npm:4.4.13"
   dependencies:
