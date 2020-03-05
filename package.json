@@ -146,5 +146,10 @@
   },
   "resolutions": {
     "fsevents": "1.2.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
