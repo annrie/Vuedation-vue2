@@ -1,4 +1,9 @@
 module.exports = {
-  '*.js': ['prettier --write', 'eslint --fix', 'git add'],
-  '*.{json,md,yml,css}': ['prettier --write', 'git add'],
-};
+  '*.(js|vue)': ['eslint --fix --cache', 'prettier --write', 'git add'],
+  '*.(vue|htm|html|css|less|sass|scss|styl|stylus|md|js)': [
+    'stylelint --fix --cache',
+    'prettier --write ',
+    'git add',
+  ],
+  '*.(htm|html)': ['htmlhint', 'prettier --write', 'git add'],
+}
