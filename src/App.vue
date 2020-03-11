@@ -24,71 +24,32 @@
         data-parent-link="false"
         data-scroll-top="true"
       >
-        <li>
-          <router-link to="/" exact>
-            Home
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/reveal" exact>
-            Reveal
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/slider" exact>
-            Slider
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/tooltip" exact>
-            Tooltip
-          </router-link>
-        </li>
-        <li class="is-drilldown-submenu-parent" data-open>
-          <a>Various Menus</a>
-          <ul class="vertical nested menu">
-            <li>
-              <router-link to="/dropdown-menu" exact data-close>
-                Dropdown Menu
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/drilldown-menu" exact data-close>
-                Drilldown Menu
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/accordion-menu" exact data-close>
-                Accordion Menu
-              </router-link>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <router-link to="/magellan" exact>
-            Magellan
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/accordion" exact>
-            Accordion
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/dropdown" exact>
-            Dropdown
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/tabs" exact>
-            Tabs
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/orbit" exact>
-            Orbit
-          </router-link>
-        </li>
+        <template v-for="menu in getAll">
+          <li
+            v-if="menu.sub != null"
+            :key="menu.id"
+            class="is-drilldown-submenu-parent"
+            data-open
+          >
+            <a>{{ menu.category }}</a>
+            <ul class="vertical dropdown menu">
+              <li v-for="submenu in menu.sub" :key="submenu.id">
+                <router-link
+                  :to="submenu.link"
+                  :exact="submenu.link == '/'"
+                  data-close
+                >
+                  {{ submenu.category }}
+                </router-link>
+              </li>
+            </ul>
+          </li>
+          <li v-else :key="menu.id">
+            <router-link :to="menu.link" :exact="menu.link == '/'">
+              {{ menu.category }}
+            </router-link>
+          </li>
+        </template>
       </ul>
     </div>
 
@@ -128,8 +89,8 @@
                 <div class="top-bar-left">
                   <div class="site-desktop-title top-bar-title">
                     <a href="/" rel="home" data-smooth-scroll>
-                      <img src="/logo.png" alt="vuedation" />
-                      <span>Vuedation</span>
+                      <img src="/logo.png" alt="nuxtation" />
+                      <component :is="tagName">Vuedation</component>
                     </a>
                   </div>
                 </div>
@@ -139,71 +100,30 @@
                     class="dropdown menu desktop-menu"
                     data-dropdown-menu
                   >
-                    <li>
-                      <router-link to="/" exact>
-                        Home
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/reveal" exact>
-                        Reveal
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/slider" exact>
-                        Slider
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/tooltip" exact>
-                        Tooltip
-                      </router-link>
-                    </li>
-                    <li class="is-dropdown-submenu-parent">
-                      <a>Various Menus</a>
-                      <ul class="vertical dropdown menu">
-                        <li>
-                          <router-link to="/dropdown-menu" exact>
-                            Dropdown Menu
-                          </router-link>
-                        </li>
-                        <li>
-                          <router-link to="/drilldown-menu" exact>
-                            Drilldown Menu
-                          </router-link>
-                        </li>
-                        <li>
-                          <router-link to="/accordion-menu" exact>
-                            Accordion Menu
-                          </router-link>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <router-link to="/magellan" exact>
-                        Magellan
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/accordion" exact>
-                        Accordion
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/dropdown" exact>
-                        Dropdown
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/tabs" exact>
-                        Tabs
-                      </router-link>
-                    </li>
-                    <li>
-                      <router-link to="/orbit" exact>
-                        Orbit
-                      </router-link>
-                    </li>
+                    <template v-for="menu in getAll">
+                      <li
+                        v-if="menu.sub != null"
+                        :key="menu.id"
+                        class="is-dropdown-submenu-parent"
+                      >
+                        <a>{{ menu.category }}</a>
+                        <ul class="vertical dropdown menu">
+                          <li v-for="submenu in menu.sub" :key="submenu.id">
+                            <router-link
+                              :to="submenu.link"
+                              :exact="submenu.link == '/'"
+                            >
+                              {{ submenu.category }}
+                            </router-link>
+                          </li>
+                        </ul>
+                      </li>
+                      <li v-else :key="menu.id">
+                        <router-link :to="menu.link" :exact="menu.link == '/'">
+                          {{ menu.category }}
+                        </router-link>
+                      </li>
+                    </template>
                   </ul>
                 </nav>
               </section>
@@ -342,6 +262,8 @@ Vue.use(VueHead)
 Vue.use(scroller)
 // const mainScrollTo = scroller()
 // mainScrollTo('body')
+// import {mapGetters} from 'vuex'
+import jsonData from './assets/json/menu.json'
 
 export default {
   name: 'App',
@@ -361,16 +283,23 @@ export default {
   data() {
     return {
       year,
+      getAll: jsonData,
     }
   },
-  // computed: {
-  //   fas() {
-  //     return fas
-  //   },
-  //   // faArrowCircleUp() {
-  //   //   return faArrowCircleUp
-  //   // },
-  // },
+  computed: {
+    tagName() {
+      if (this.$route.name === 'home') {
+        return 'h1'
+      }
+      return 'p'
+    },
+    //   fas() {
+    //     return fas
+    //   },
+    //   // faArrowCircleUp() {
+    //   //   return faArrowCircleUp
+    //   // },
+  },
   mounted() {
     this.offCanvas = new Foundation.OffCanvas($('#offCanvas'))
     this.dropDown = new Foundation.DropdownMenu($('#dropDown'))
@@ -381,16 +310,16 @@ export default {
     this.sticky = new Foundation.Sticky($('#mainNav'))
     this.smoothScroll = new Foundation.SmoothScroll($('#app'))
   },
-  // destroyed() {
-  //   this.drillDown.destroy()
-  // },
+  destroyed() {
+    this.drillDown.destroy()
+  },
   head: {
     title: {
       inner: 'home',
       // innerに入力したものがタイトルになりますが、separatorとcomplementを使用すると「タイトル | 捕捉」のようになります。
       // トップページ以外でよく見ますね。不要な場合は省略可能です。
       separator: '|',
-      complement: 'Foundation + Vue',
+      complement: 'Vuedation',
     },
     meta: [
       {name: 'description', content: 'descriptionの内容が入ります。'},
@@ -426,10 +355,6 @@ export default {
 <style lang="scss">
 .skip {
   overflow: auto;
-}
-main {
-  height: 100vh;
-  margin-top: 3rem;
 }
 svg.icon {
   fill: currentColor;

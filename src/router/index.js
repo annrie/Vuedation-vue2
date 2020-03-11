@@ -19,36 +19,37 @@ import Orbit from '@/components/Orbit'
 
 Vue.use(Router)
 
-export default new Router( {
-  mode:'history',
+export default new Router({
+  mode: 'history',
   linkActiveClass: 'is-active',
   routes: [
     // routes
-    { name: 'home', path: '/', component: Home },
-    { name: 'reveal', path: '/reveal', component: Reveal },
-    { name: 'slider', path: '/slider', component: Slider },
-    { name: 'tooltip', path: '/tooltip', component: Tooltip },
-    { name: 'dropdown-menu', path: '/dropdown-menu', component: DropdownMenu },
+    {name: 'home', path: '/', component: Home},
+    {name: 'reveal', path: '/reveal', component: Reveal},
+    {name: 'slider', path: '/slider', component: Slider},
+    {name: 'tooltip', path: '/tooltip', component: Tooltip},
+    {name: 'dropdown-menu', path: '/dropdownmenu', component: DropdownMenu},
     {
       name: 'drilldown-menu',
-      path: '/drilldown-menu',
-      component: DrilldownMenu
+      path: '/drilldownmenu',
+      component: DrilldownMenu,
     },
     {
       name: 'accordion-menu',
-      path: '/accordion-menu',
-      component: AccordionMenu
+      path: '/accordionmenu',
+      component: AccordionMenu,
     },
-    { name: 'magellan', path: '/magellan', component: Magellan },
-    { name: 'accordion', path: '/accordion', component: Accordion },
-    { name: 'dropdown', path: '/dropdown', component: Dropdown },
-    { name: 'tabs', path: '/tabs', component: Tabs },
-    { name: 'orbit', path: '/orbit', component: Orbit }
+    {name: 'magellan', path: '/magellan', component: Magellan},
+    {name: 'accordion', path: '/accordion', component: Accordion},
+    {name: 'dropdown', path: '/dropdown', component: Dropdown},
+    {name: 'tabs', path: '/tabs', component: Tabs},
+    {name: 'orbit', path: '/orbit', component: Orbit},
   ],
-  scrollBehavior (to, from, savedPosition) {
-      if (savedPosition) {
-        return savedPosition
-      } else {
-        return { x: 0, y: 0 }
-      }
-  }})
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return {x: 0, y: 0}
+    }
+  },
+})

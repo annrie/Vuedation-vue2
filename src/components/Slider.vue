@@ -5,23 +5,29 @@
         <h1>{{ msg }}</h1>
       </div>
       <div class="cell">
-        <div
-          id="slider"
-          class="slider"
-          data-slider
-          :data-initial-start="dataValue"
-          :data-end="dataEnd"
-        >
-          <span
-            class="slider-handle"
-            data-slider-handle
-            role="slider"
-            tabindex="1"
-          />
-          <span class="slider-fill" data-slider-fill />
-          <input type="hidden" class="slider-input" />
+        <div class="grid-x grid-margin-x">
+          <div class="cell small-10">
+            <div
+              id="slider"
+              class="slider"
+              data-slider
+              :data-initial-start="dataValue"
+              :data-end="dataEnd"
+            >
+              <span
+                class="slider-handle"
+                data-slider-handle
+                role="slider"
+                tabindex="1"
+              />
+              <span class="slider-fill" data-slider-fill />
+              <input type="hidden" class="slider-input" />
+            </div>
+          </div>
+          <div class="cell small-2">
+            <input v-model="dataValue" type="number" />
+          </div>
         </div>
-        <p>Value: {{ dataValue }}</p>
       </div>
     </div>
   </div>

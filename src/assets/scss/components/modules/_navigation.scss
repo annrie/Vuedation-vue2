@@ -13,18 +13,14 @@
 }
 .mobile-menu,
 .site-title-bar {
-  @include hide-for(large);
+  @include hide-for(medium);
 }
-
-//
 .desktop-menu,
 .site-navigation {
-  .top-bar-left {
-    @include show-for(large);
-  }
-}
-.site-navigation {
   opacity: 0.8;
+  .top-bar-left {
+    @include show-for(medium);
+  }
 }
 .vertical {
   &.nested {
@@ -33,7 +29,46 @@
     }
   }
 }
+.off-canvas {
+  height: 100vh;
+  .close-button {
+    z-index: 20;
+    color: $white;
+  }
+  & .mobile-menu {
+    padding-top: 3rem;
+    background-color: $black;
+    a {
+      font-size: rem-calc(15);
+      font-weight: 600;
+      color: $white;
+      &.is-active {
+        color: $white;
+        background-color: lighten($topbar-background, 10%);
+      }
+      &:not(.is-active) {
+        color: $white;
+        background-color: $black;
+      }
+      &:hover {
+        background-color: lighten($dark-nav-color, 5%);
+      }
+    }
+    .is-drilldown-submenu {
+      height: 100vh;
+      background-color: $black;
+      & .js-drilldown-back {
+        & a {
+          color: $white;
+          background-color: lighten($topbar-background, 10%);
+        }
+      }
+    }
+  }
+}
 .title-bar {
+  // mobile menu
+  margin-top: 0;
   text-align: left;
   background-color: $primary-color;
   opacity: 0.9;
@@ -71,61 +106,10 @@
     }
   }
 }
-
-// Sticky
-.site-header {
-  position: relative;
-  z-index: 10;
-
-  // margin-top: -20px;
-  // padding-top: -20px;
-  &.sticky {
-    transition: box-shadow 0.3s;
-    &.is-stuck {
-      z-index: 10;
-    }
-    &.is-at-top {
-      &.is-stuck {
-        box-shadow: 0 0 rem-calc(10) rgba($black, 0.2);
-      }
-    }
-  }
-}
-.off-canvas {
-  height: 100vh;
-  .close-button {
-    z-index: 20;
-    color: $white;
-  }
-  & .mobile-menu {
-    padding-top: 3rem;
-    background-color: $black;
-    a {
-      font-size: rem-calc(15);
-      font-weight: 600;
-      color: $white;
-      &.is-active {
-        color: $white;
-        background-color: $red;
-      }
-      &:not(.is-active) {
-        color: $white;
-        background-color: $black;
-      }
-      &:hover {
-        background-color: lighten($dark-nav-color, 5%);
-      }
-    }
-    .js-drilldown-back {
-      background-color: $red;
-    }
-    .is-drilldown-submenu {
-      height: 100vh;
-      background-color: $black;
-    }
-  }
-}
 .top-bar {
+  // non mobile menu
+  position: relative;
+  top: 0;
   @include breakpoint(small only) {
     display: none;
   }
@@ -139,25 +123,19 @@
         position: relative;
         top: 10px;
         display: block;
-        width: 4.5rem;
-        height: 4.5rem;
-        & + span {
+        width: 3.8rem;
+        height: 3.8rem;
+        & + h1,
+        & + p {
           @include push-center;
 
           position: relative;
-          top: 0;
+          top: 7px;
+          bottom: 0;
+          font-size: 1rem;
+          line-height: 1;
           color: $white;
         }
-      }
-      h1 {
-        position: absolute;
-        top: -65px;
-        left: 0;
-        padding-left: 1rem;
-        font-size: 0.8rem;
-        font-weight: bold;
-        line-height: 1.8;
-        color: $white;
       }
     }
 
@@ -167,9 +145,8 @@
   }
   .menu {
     &.desktop-menu {
-      // font-size: 1rem;
-      padding-bottom: 0;
-      margin-top: 50px;
+      // global menu
+      margin-top: 40px;
       font-weight: bold;
       line-height: 1;
       @include breakpoint(medium) {
@@ -178,70 +155,34 @@
       @include breakpoint(xlarge) {
         font-size: 1rem;
       }
-      li > a {
-        background-color: $success-color;
-        &:hover {
-          background-color: lighten($anchor-color, 10%);
-          &.is-active {
+      & li {
+        a {
+          &:not(.is-active) {
             color: $white;
-            background-color: $anchor-color;
-            &:hover {
-              background-color: lighten($anchor-color, 10%);
+            background-color: $topbar-background;
+          }
+          &:hover {
+            &:not(.button) {
+              background-color: #42525d;
             }
           }
         }
-      }
-    }
-    &.is-drop-down-submenun > a {
-      &.is-active {
-        color: $white;
-        background-color: $anchor-color;
-        &:hover {
-          background-color: lighten($anchor-color, 10%);
-        }
-      }
-    }
-    & li {
-      a {
-        &:not(.is-active) {
+        a.is-active {
           color: $white;
-          background-color: $topbar-background;
-        }
-        &:hover {
-          &:not(.button) {
-            background-color: #42525d;
-          }
+          background-color: lighten($topbar-background, 10%);
         }
       }
-    }
 
-    // li a end
-    & > li {
-      &:not(.menu-text) > a {
-        padding: 1rem;
-      }
-      &:not(:first-of-type) {
-        border-left: $silver 1px solid;
-      }
-    }
-    // .menu end
-  }
-
-  // .menu-icon {
-  //   @include hamburger($color: rgba($white, .8));
-  // }
-
-  // ul.nested li {
-  //   background-color: $topbar-background;
-  // }
-  ul {
-    &.nested {
-      li {
-        background-color: $topbar-background;
-        &:hover {
-          background-color: lighten (#00bfff, 20% );
+      // li a end
+      & > li {
+        &:not(.menu-text) > a {
+          padding: 1rem;
+        }
+        &:not(:first-of-type) {
+          border-left: $silver 1px solid;
         }
       }
+      // .menu end
     }
   }
 }
