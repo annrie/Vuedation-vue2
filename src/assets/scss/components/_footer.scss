@@ -1,0 +1,101 @@
+/* footer */
+footer {
+  z-index: 120;
+  margin-top: 0;
+  background: $white;
+  .container {
+    @include push-center;
+
+    margin: 0 auto;
+  }
+  .copy {
+    padding-top: 5px;
+    font-size: 0.9rem;
+    color: $black;
+    @include breakpoint(small only) {
+      font-size: 0.7rem;
+    }
+  }
+}
+.footer {
+  font-family: 'rounded Mgen+ 1m regular', monospace;
+  color: $white;
+  background: $primary-color;
+}
+.footer-container {
+  @include xy-grid-container;
+
+  margin-top: auto;
+  // margin-top: 0;
+}
+.footer-grid {
+  @include xy-grid;
+  @include xy-cell(12);
+
+  padding: 0;
+  section {
+    @include xy-cell(auto);
+    // @include xy-cell (100%);
+  }
+}
+
+@include breakpoint(small only) {
+  .bottom-bar {
+    @include show-for(small);
+    nav {
+      ul {
+        padding: 0;
+        margin: 0 1rem 0 0;
+        list-style: none;
+        background: #e7e7e7;
+        border: 1px solid #98adb7;
+        border-radius: 10px;
+        li {
+          width: 100% !important;
+          background: none;
+          > a {
+            @include link-icon(#383f9a);
+
+            display: block;
+            padding: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: $jet !important;
+            text-decoration: none;
+            background: none;
+            border-color: #ccc;
+            border-style: dotted;
+            border-width: 0 0 1px;
+            border-bottom: 1px solid #98adb7;
+            &:hover {
+              color: lighten ($jet, 10%);
+              background-color: $green;
+            }
+          }
+          &:hover {
+            background-color: $green;
+          }
+        }
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+.back_to_top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 99;
+  & a {
+    display: block;
+    color: rgba(0, 0, 0, 0.5);
+    &:hover {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+  & span {
+    @include element-invisible;
+  }
+}
