@@ -21,7 +21,8 @@ I found [Setting up Vue 2 and Foundation 6](_COPY11@tommaso.marcelli/setting-up-
 To set up the template manually, you can first download it in Git.
 
 ```bash {.copy}
- git clone git@github.com:annrie/Vuedation.git projectname cd projectname
+ git clone git@github.com:annrie/Vuedation.git projectname
+ cd projectname
 ```
 
 ## Installation
