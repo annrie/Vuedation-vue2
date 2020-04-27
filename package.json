@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "A Vue.js project use webpack4 and babel7",
-  "author": "annrie <blastspinner@gmail.com>",
+  "author": "annrie <annrie@users.noreply.github.com>",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
     "lint": "eslint --ext .js,.vue src",
