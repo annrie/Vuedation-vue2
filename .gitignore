@@ -15,6 +15,7 @@ package-lock.json
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state*.yml
+.yarnrc.yml
 .pnp.*
 
 # Editor directories and files

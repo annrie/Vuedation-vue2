@@ -31,9 +31,10 @@ Then, open the folder on the command line and install the required dependencies.
 You can also use npm, but I'm using [yarn2](https://yarnpkg.com/getting-started/install).
 
 ```bash
-＃ install dependencies
-yarn set version berry # Setup of yarn2
-yarn
+# install dependencies
+npx @yarnpkg/doctor # yarn2???????
+echo "nodeLinker: node-modules" > .yarnrc.yml
+yarn install
 ```
 
 Finally, run `yarn dev` to start up the server. The finished site will be created in a folder named `dist` which can be viewed at the following URL.

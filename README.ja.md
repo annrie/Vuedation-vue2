@@ -32,8 +32,9 @@ npm も使えますが、[yarn2](https://yarnpkg.com/getting-started/install) �
 
 ```bash
 ＃ install dependencies
-yarn set version berry # yarn2のセットアップ
-yarn
+npx @yarnpkg/doctor # yarn2のセットアップ
+echo "nodeLinker: node-modules" > .yarnrc.yml
+yarn install
 ```
 
 最後に、 `yarn dev` を実行して サーバーを立ち上げます。 完成したサイトは、次の URL で表示可能な `dist`というフォルダーに作成されます。
