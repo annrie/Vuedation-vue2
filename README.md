@@ -32,7 +32,7 @@ You can also use npm, but I'm using [yarn2](https://yarnpkg.com/getting-started/
 
 ```bash
 # install dependencies
-npx @yarnpkg/doctor # yarn2???????
+npx @yarnpkg/doctor #  Setup of yarn2
 echo "nodeLinker: node-modules" > .yarnrc.yml
 yarn install
 ```
