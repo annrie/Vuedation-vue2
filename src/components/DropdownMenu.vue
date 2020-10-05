@@ -23,52 +23,52 @@
 </template>
 
 <script>
-export default {
-  name: 'DropdownMenu',
-  data() {
-    return {
-      msg: 'Dropdown Menu',
-    }
-  },
-  mounted() {
-    this.dropdownMenu = new Foundation.DropdownMenu($('#dropdown-menu'), {
-      // These options can be declarative using the data attributes
-      hoverDelay: 300,
-    })
-  },
-  destroyed() {
-    this.dropdownMenu.destroy()
-  },
-}
+  export default {
+    name: 'DropdownMenu',
+    data() {
+      return {
+        msg: 'Dropdown Menu',
+      }
+    },
+    mounted() {
+      this.dropdownMenu = new Foundation.DropdownMenu($('#dropdown-menu'), {
+        // These options can be declarative using the data attributes
+        hoverDelay: 300,
+      })
+    },
+    destroyed() {
+      this.dropdownMenu.destroy()
+    },
+  }
 </script>
 <style lang="scss">
-#dropdown-menu {
-  .is-dropdown-submenu-parent.opens-right {
-    &.is-active {
-      a {
-        color: $white;
-        background-color: rgba ($primary-color, 0.7);
-        &:hover {
+  #dropdown-menu {
+    .is-dropdown-submenu-parent.opens-right {
+      &.is-active {
+        a {
           color: $white;
-          background-color: $vapor;
-        }
-      }
-      .is-dropdown-submenu {
-        & > .is-submenu-item {
-          background-color: rgba ($primary-color, 0.9);
-        }
-        &.js-dropdown-active {
-          a {
+          background-color: rgba ($primary-color, 0.7);
+          &:hover {
             color: $white;
-            background-color: $white-smoke;
-            &:hover {
-              color: get-color(primary);
-              background-color: lighten($primary-color, 40%);
+            background-color: $vapor;
+          }
+        }
+        .is-dropdown-submenu {
+          & > .is-submenu-item {
+            background-color: rgba ($primary-color, 0.9);
+          }
+          &.js-dropdown-active {
+            a {
+              color: $white;
+              background-color: $white-smoke;
+              &:hover {
+                color: get-color(primary);
+                background-color: lighten($primary-color, 40%);
+              }
             }
           }
         }
       }
     }
   }
-}
 </style>

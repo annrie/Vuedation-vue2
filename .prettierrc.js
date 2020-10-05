@@ -10,4 +10,5 @@ module.exports = {
   bracketSpacing: false,
   arrowParens: 'always',
   htmlWhitespaceSensitivity: 'ignore',
+  vueIndentScriptAndStyle: true,
 }

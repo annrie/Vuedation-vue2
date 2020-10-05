@@ -79,27 +79,27 @@
 </template>
 
 <script>
-import AssetsImage1 from '../assets/img/orbit/01.jpg'
-import AssetsImage2 from '../assets/img/orbit/02.jpg'
-import AssetsImage3 from '../assets/img/orbit/03.jpg'
-import AssetsImage4 from '../assets/img/orbit/04.jpg'
+  import AssetsImage1 from '../assets/img/orbit/01.jpg'
+  import AssetsImage2 from '../assets/img/orbit/02.jpg'
+  import AssetsImage3 from '../assets/img/orbit/03.jpg'
+  import AssetsImage4 from '../assets/img/orbit/04.jpg'
 
-export default {
-  name: 'Orbit',
-  data() {
-    return {
-      msg: 'Orbit',
-      AssetsImage1: AssetsImage1,
-      AssetsImage2: AssetsImage2,
-      AssetsImage3: AssetsImage3,
-      AssetsImage4: AssetsImage4,
-    }
-  },
-  mounted() {
-    this.orbit = new Foundation.Orbit($('#orbit'))
-  },
-  destroyed() {
-    this.orbit.destroy()
-  },
-}
+  export default {
+    name: 'Orbit',
+    data() {
+      return {
+        msg: 'Orbit',
+        AssetsImage1: AssetsImage1,
+        AssetsImage2: AssetsImage2,
+        AssetsImage3: AssetsImage3,
+        AssetsImage4: AssetsImage4,
+      }
+    },
+    mounted() {
+      this.orbit = new Foundation.Orbit($('#orbit'))
+    },
+    destroyed() {
+      this.orbit.destroy()
+    },
+  }
 </script>

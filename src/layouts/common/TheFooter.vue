@@ -38,13 +38,13 @@
 </template>
 
 <script>
-let now = new Date()
-let year = now.getFullYear()
-export default {
-  data() {
-    return {
-      year,
-    }
-  },
-}
+  let now = new Date()
+  let year = now.getFullYear()
+  export default {
+    data() {
+      return {
+        year,
+      }
+    },
+  }
 </script>

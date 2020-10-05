@@ -25,7 +25,7 @@
     >
       <template v-for="menu in getAll">
         <li
-          v-if="menu.sub != null"
+          v-if="menu.sub"
           :key="menu.id"
           class="is-drilldown-submenu-parent"
           data-open
@@ -54,12 +54,12 @@
 </template>
 
 <script>
-import jsonData from '../../assets/json/menu.json'
-export default {
-  data() {
-    return {
-      getAll: jsonData,
-    }
-  },
-}
+  import jsonData from '../../assets/json/menu.json'
+  export default {
+    data() {
+      return {
+        getAll: jsonData,
+      }
+    },
+  }
 </script>

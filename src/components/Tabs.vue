@@ -46,21 +46,21 @@
 </template>
 
 <script>
-export default {
-  name: 'Tabs',
-  data() {
-    return {
-      msg: 'Tabs',
-    }
-  },
-  mounted() {
-    this.tabs = new Foundation.Tabs($('#tabs'), {
-      // These options can be declarative using the data attributes
-      matchHeight: false,
-    })
-  },
-  destroyed() {
-    this.tabs.destroy()
-  },
-}
+  export default {
+    name: 'Tabs',
+    data() {
+      return {
+        msg: 'Tabs',
+      }
+    },
+    mounted() {
+      this.tabs = new Foundation.Tabs($('#tabs'), {
+        // These options can be declarative using the data attributes
+        matchHeight: false,
+      })
+    },
+    destroyed() {
+      this.tabs.destroy()
+    },
+  }
 </script>

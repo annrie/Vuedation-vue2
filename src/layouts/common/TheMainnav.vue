@@ -33,7 +33,7 @@
         <ul id="dropDown" class="dropdown menu desktop-menu" data-dropdown-menu>
           <template v-for="menu in getAll">
             <li
-              v-if="menu.sub != null"
+              v-if="menu.sub"
               :key="menu.id"
               class="is-dropdown-submenu-parent"
             >
@@ -59,23 +59,23 @@
 </template>
 
 <script>
-import jsonData from '../../assets/json/menu.json'
-import AssetsImage from '../../assets/img/logo.png'
+  import jsonData from '../../assets/json/menu.json'
+  import AssetsImage from '../../assets/img/logo.png'
 
-export default {
-  data() {
-    return {
-      getAll: jsonData,
-      AssetsImage: AssetsImage,
-    }
-  },
-  computed: {
-    tagName() {
-      if (this.$route.name === 'home') {
-        return 'h1'
+  export default {
+    data() {
+      return {
+        getAll: jsonData,
+        AssetsImage: AssetsImage,
       }
-      return 'p'
     },
-  },
-}
+    computed: {
+      tagName() {
+        if (this.$route.name === 'home') {
+          return 'h1'
+        }
+        return 'p'
+      },
+    },
+  }
 </script>

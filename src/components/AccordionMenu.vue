@@ -21,22 +21,22 @@
 </template>
 
 <script>
-export default {
-  name: 'AccordionMenu',
-  data() {
-    return {
-      msg: 'Accordion Menu',
-    }
-  },
-  mounted() {
-    this.accordionMenu = new Foundation.AccordionMenu($('#accordion-menu'), {
-      // These options can be declarative using the data attributes
-      slideSpeed: 500,
-      multiOpen: true,
-    })
-  },
-  destroyed() {
-    this.accordionMenu.destroy()
-  },
-}
+  export default {
+    name: 'AccordionMenu',
+    data() {
+      return {
+        msg: 'Accordion Menu',
+      }
+    },
+    mounted() {
+      this.accordionMenu = new Foundation.AccordionMenu($('#accordion-menu'), {
+        // These options can be declarative using the data attributes
+        slideSpeed: 500,
+        multiOpen: true,
+      })
+    },
+    destroyed() {
+      this.accordionMenu.destroy()
+    },
+  }
 </script>

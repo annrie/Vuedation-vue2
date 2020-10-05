@@ -34,26 +34,26 @@
 </template>
 
 <script>
-export default {
-  name: 'Slider',
-  data() {
-    return {
-      msg: 'Slider',
-      dataValue: 50,
-      dataEnd: 200,
-    }
-  },
-  mounted() {
-    this.slider = new Foundation.Slider($('#slider'), {
-      // These options can be declarative using the data attributes
-      step: 10,
-    })
-    this.slider.$element.on('moved.zf.slider', () => {
-      this.dataValue = this.slider.inputs.val()
-    })
-  },
-  destroyed() {
-    this.slider.destroy()
-  },
-}
+  export default {
+    name: 'Slider',
+    data() {
+      return {
+        msg: 'Slider',
+        dataValue: 50,
+        dataEnd: 200,
+      }
+    },
+    mounted() {
+      this.slider = new Foundation.Slider($('#slider'), {
+        // These options can be declarative using the data attributes
+        step: 10,
+      })
+      this.slider.$element.on('moved.zf.slider', () => {
+        this.dataValue = this.slider.inputs.val()
+      })
+    },
+    destroyed() {
+      this.slider.destroy()
+    },
+  }
 </script>

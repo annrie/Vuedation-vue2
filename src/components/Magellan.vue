@@ -49,80 +49,80 @@
 </template>
 
 <script>
-export default {
-  name: 'Magellan',
-  data() {
-    return {
-      msg: 'Magellan',
-      windowWidth: window.innerWidth,
-      windowHeight: window.innerHeight,
-      windowPageYOffset: window.pageYOffset,
-    }
-  },
-  mounted() {
-    this.sticky = new Foundation.Sticky($('#magellan'))
-    this.magellan = new Foundation.Magellan($('#magellan'), {
-      // These options can be declarative using the data attributes
-      animationEasing: 'swing',
-      dataOffset: 500,
-    })
-    window.addEventListener('resize', this.calculateWindowWidth)
-    window.addEventListener('resize', this.calculateWindowHeight)
-    window.addEventListener('scroll', this.calculateWindowPageYOffset)
-  },
-  destroyed() {
-    this.magellan.destroy()
-  },
-  beforeDestroy() {
-    window.addEventListener('resize', this.calculateWindowWidth)
-    window.addEventListener('resize', this.calculateWindowHeight)
-    window.addEventListener('scroll', this.calculateWindowPageYOffset)
-  },
-  methods: {
-    calculateWindowWidth() {
-      // resizeのたびに発火する
-      this.windowWidth = window.innerWidth
+  export default {
+    name: 'Magellan',
+    data() {
+      return {
+        msg: 'Magellan',
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight,
+        windowPageYOffset: window.pageYOffset,
+      }
     },
-    calculateWindowHeight() {
-      this.windowHeight = window.innerHeight
+    mounted() {
+      this.sticky = new Foundation.Sticky($('#magellan'))
+      this.magellan = new Foundation.Magellan($('#magellan'), {
+        // These options can be declarative using the data attributes
+        animationEasing: 'swing',
+        dataOffset: 500,
+      })
+      window.addEventListener('resize', this.calculateWindowWidth)
+      window.addEventListener('resize', this.calculateWindowHeight)
+      window.addEventListener('scroll', this.calculateWindowPageYOffset)
     },
-    calculateWindowPageYOffset() {
-      this.windowPageYOffset = window.pageYOffset
+    destroyed() {
+      this.magellan.destroy()
     },
-  },
-}
+    beforeDestroy() {
+      window.addEventListener('resize', this.calculateWindowWidth)
+      window.addEventListener('resize', this.calculateWindowHeight)
+      window.addEventListener('scroll', this.calculateWindowPageYOffset)
+    },
+    methods: {
+      calculateWindowWidth() {
+        // resizeのたびに発火する
+        this.windowWidth = window.innerWidth
+      },
+      calculateWindowHeight() {
+        this.windowHeight = window.innerHeight
+      },
+      calculateWindowPageYOffset() {
+        this.windowPageYOffset = window.pageYOffset
+      },
+    },
+  }
 </script>
 
 <style lang="scss" scoped>
-main {
-  height: auto;
-  .is-active {
-    color: $white;
-    background-color: $primary-color;
-  }
-  .sections {
-    @include breakpoint(small) {
-      margin-bottom: 50px;
+  main {
+    height: auto;
+    .is-active {
+      color: $white;
+      background-color: $primary-color;
     }
-    @include breakpoint(medium) {
-      margin-bottom: 300px;
-    }
-    section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 500px;
-      margin: 1rem;
-      background: $light-gray;
-      span {
-        font-size: 2rem;
-        font-weight: lighter;
+    .sections {
+      @include breakpoint(small) {
+        margin-bottom: 50px;
+      }
+      @include breakpoint(medium) {
+        margin-bottom: 300px;
+      }
+      section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 500px;
+        margin: 1rem;
+        background: $light-gray;
+        span {
+          font-size: 2rem;
+          font-weight: lighter;
+        }
       }
     }
+    .menu-text {
+      font-size: smaller;
+      font-weight: lighter;
+    }
   }
-  .menu-text {
-    font-size: smaller;
-    font-weight: lighter;
-  }
-}
 </style>

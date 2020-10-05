@@ -35,42 +35,42 @@
 </template>
 
 <script>
-// import {Foundation,Reveal} from '~/plugins/foundation'
-export default {
-  name: 'Reveal',
-  data() {
-    return {
-      msg: 'Reveal',
-    }
-  },
-  mounted() {
-    this.reveal = new Foundation.Reveal($('#reveal-dialog'), {
-      // These options can be declarative using the data attributes
-      animationIn: 'spin-in',
-      animationOut: 'spin-out',
-    })
-  },
-  destroyed() {
-    this.reveal.destroy()
-  },
-  methods: {
-    // Added the below openReveal method for two reasons:
-    // 1) There was a bug preventing the reveal from working once
-    // you navigated away and back to the reveal component.
-    // 2) Most dialogs will need to be opened using code.
-    openReveal() {
-      this.reveal.open()
+  // import {Foundation,Reveal} from '~/plugins/foundation'
+  export default {
+    name: 'Reveal',
+    data() {
+      return {
+        msg: 'Reveal',
+      }
     },
-  },
-}
+    mounted() {
+      this.reveal = new Foundation.Reveal($('#reveal-dialog'), {
+        // These options can be declarative using the data attributes
+        animationIn: 'spin-in',
+        animationOut: 'spin-out',
+      })
+    },
+    destroyed() {
+      this.reveal.destroy()
+    },
+    methods: {
+      // Added the below openReveal method for two reasons:
+      // 1) There was a bug preventing the reveal from working once
+      // you navigated away and back to the reveal component.
+      // 2) Most dialogs will need to be opened using code.
+      openReveal() {
+        this.reveal.open()
+      },
+    },
+  }
 </script>
 
 <style lang="scss" scoped>
-.close-button {
-  z-index: 20;
-  color: $black;
-  &:hover {
-    color: scale-color($primary-color, $lightness: -20%);
+  .close-button {
+    z-index: 20;
+    color: $black;
+    &:hover {
+      color: scale-color($primary-color, $lightness: -20%);
+    }
   }
-}
 </style>

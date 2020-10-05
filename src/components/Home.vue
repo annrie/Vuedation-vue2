@@ -69,68 +69,78 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueMq from 'vue-mq'
-import AssetsImage from '../assets/img/logo.png'
-import {fas, faFileCode} from '@fortawesome/free-solid-svg-icons'
-import {faGithub, faVuejs, fab} from '@fortawesome/free-brands-svg-icons'
+  import Vue from 'vue'
+  import VueMq from 'vue-mq'
+  import AssetsImage from '../assets/img/logo.png'
+  import {fas, faFileCode} from '@fortawesome/free-solid-svg-icons'
+  import {faGithub, faVuejs, fab} from '@fortawesome/free-brands-svg-icons'
 
-Vue.use(VueMq, {
-  breakpoints: {
-    small: 640,
-    medium: 769,
-    tablet: 1025,
-    large: 1201,
-    xlarge: 1441,
-    xxlarge: Infinity,
-  },
-  defaultBreakpoint: 'small',
-})
+  Vue.use(VueMq, {
+    breakpoints: {
+      small: 640,
+      medium: 769,
+      tablet: 1025,
+      large: 1201,
+      xlarge: 1441,
+      xxlarge: Infinity,
+    },
+    defaultBreakpoint: 'small',
+  })
 
-Vue.mixin({
-  data() {
-    return {
-      small: false, // until 640px
-      medium: false, // until 768px
-      tablet: false, // from 1024px
-      largePlus: false, // from 1024px and until 1200px
-      large: false, // from 1024px
-      xlarge: false, // from 1200px
-      xxlarge: false, // from 1440px
-    }
-  },
-})
+  Vue.mixin({
+    data() {
+      return {
+        small: false, // until 640px
+        medium: false, // until 768px
+        tablet: false, // from 1024px
+        largePlus: false, // from 1024px and until 1200px
+        large: false, // from 1024px
+        xlarge: false, // from 1200px
+        xxlarge: false, // from 1440px
+      }
+    },
+  })
 
-export default {
-  name: 'HelloWorld',
-  data() {
-    return {
-      msg: 'Welcome to Vuedation',
-      windowWidth: window.innerWidth,
-      windowHeight: window.innerHeight,
-      windowPageYOffset: window.pageYOffset,
-      AssetsImage: AssetsImage,
-    }
-  },
-  computed: {
-    fas() {
-      return fas
+  export default {
+    name: 'HelloWorld',
+    data() {
+      return {
+        msg: 'Welcome to Vuedation',
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight,
+        windowPageYOffset: window.pageYOffset,
+        AssetsImage: AssetsImage,
+      }
     },
-    fab() {
-      return fab
+    computed: {
+      fas() {
+        return fas
+      },
+      fab() {
+        return fab
+      },
+      faGithub() {
+        return faGithub
+      },
+      faVuejs() {
+        return faVuejs
+      },
+      faFileCode() {
+        return faFileCode
+      },
     },
-    faGithub() {
-      return faGithub
+    watch: {
+      $mq() {
+        this.small = this.$mq === 'small'
+        this.medium = this.$mq === 'medium'
+        this.tablet = this.$mq === 'tablet'
+        this.largePlus = this.$mq === 'xlarge' || this.$mq === 'xxlarge'
+        this.large = this.$mq === 'large'
+        this.xlarge = this.$mq === 'xlarge'
+        this.xxlarge = this.$mq === 'xxlarge'
+      },
     },
-    faVuejs() {
-      return faVuejs
-    },
-    faFileCode() {
-      return faFileCode
-    },
-  },
-  watch: {
-    $mq() {
+    mounted() {
       this.small = this.$mq === 'small'
       this.medium = this.$mq === 'medium'
       this.tablet = this.$mq === 'tablet'
@@ -138,61 +148,51 @@ export default {
       this.large = this.$mq === 'large'
       this.xlarge = this.$mq === 'xlarge'
       this.xxlarge = this.$mq === 'xxlarge'
+      window.addEventListener('resize', this.calculateWindowWidth)
+      window.addEventListener('resize', this.calculateWindowHeight)
+      window.addEventListener('scroll', this.calculateWindowPageYOffset)
     },
-  },
-  mounted() {
-    this.small = this.$mq === 'small'
-    this.medium = this.$mq === 'medium'
-    this.tablet = this.$mq === 'tablet'
-    this.largePlus = this.$mq === 'xlarge' || this.$mq === 'xxlarge'
-    this.large = this.$mq === 'large'
-    this.xlarge = this.$mq === 'xlarge'
-    this.xxlarge = this.$mq === 'xxlarge'
-    window.addEventListener('resize', this.calculateWindowWidth)
-    window.addEventListener('resize', this.calculateWindowHeight)
-    window.addEventListener('scroll', this.calculateWindowPageYOffset)
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.calculateWindowWidth)
-    window.removeEventListener('resize', this.calculateWindowHeight)
-    window.removeEventListener('scroll', this.calculateWindowPageYOffset)
-  },
-  methods: {
-    calculateWindowWidth() {
-      // resizeのたびに発火する
-      this.windowWidth = window.innerWidth
+    beforeDestroy() {
+      window.removeEventListener('resize', this.calculateWindowWidth)
+      window.removeEventListener('resize', this.calculateWindowHeight)
+      window.removeEventListener('scroll', this.calculateWindowPageYOffset)
     },
-    calculateWindowHeight() {
-      this.windowHeight = window.innerHeight
+    methods: {
+      calculateWindowWidth() {
+        // resizeのたびに発火する
+        this.windowWidth = window.innerWidth
+      },
+      calculateWindowHeight() {
+        this.windowHeight = window.innerHeight
+      },
+      calculateWindowPageYOffset() {
+        this.windowPageYOffset = window.pageYOffset
+      },
     },
-    calculateWindowPageYOffset() {
-      this.windowPageYOffset = window.pageYOffset
-    },
-  },
-}
+  }
 </script>
 
 <style lang="scss" scoped>
-h1,
-h2 {
-  font-weight: normal;
-  color: $black;
-}
-ul {
-  padding: 0;
-  list-style-type: none;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.vuedationlogo {
-  // @include mui-animation(fade, zoom);
-  @include mui-animation(fade);
+  h1,
+  h2 {
+    font-weight: normal;
+    color: $black;
+  }
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  a {
+    color: #42b983;
+  }
+  .vuedationlogo {
+    // @include mui-animation(fade, zoom);
+    @include mui-animation(fade);
 
-  animation-duration: 10s;
-}
+    animation-duration: 10s;
+  }
 </style>

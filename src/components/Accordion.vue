@@ -25,28 +25,28 @@
 </template>
 
 <script>
-// import Foundation from '~/plugins/foundation'
-export default {
-  name: 'Accordion',
-  data() {
-    return {
-      msg: 'Accordion',
-    }
-  },
-  computed: {
-    page() {
-      return this.$store.state.pages.page
+  // import Foundation from '~/plugins/foundation'
+  export default {
+    name: 'Accordion',
+    data() {
+      return {
+        msg: 'Accordion',
+      }
     },
-  },
-  mounted() {
-    this.accordion = new Foundation.Accordion($('#accordion'), {
-      // These options can be declarative using the data attributes
-      slideSpeed: 500,
-      multiExpand: true,
-    })
-  },
-  destroyed() {
-    this.accordion.destroy()
-  },
-}
+    computed: {
+      page() {
+        return this.$store.state.pages.page
+      },
+    },
+    mounted() {
+      this.accordion = new Foundation.Accordion($('#accordion'), {
+        // These options can be declarative using the data attributes
+        slideSpeed: 500,
+        multiExpand: true,
+      })
+    },
+    destroyed() {
+      this.accordion.destroy()
+    },
+  }
 </script>
