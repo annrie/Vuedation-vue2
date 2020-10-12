@@ -9,23 +9,27 @@
           <div class="cell small-10">
             <div
               id="slider"
-              class="slider"
-              data-slider
               :data-initial-start="dataValue"
               :data-end="dataEnd"
+              class="slider"
+              data-slider
+              data-step="10"
+              data-position-value-function="log"
+              data-non-linear-base="5"
             >
               <span
                 class="slider-handle"
                 data-slider-handle
                 role="slider"
-                tabindex="1"
-              />
-              <span class="slider-fill" data-slider-fill />
-              <input type="hidden" class="slider-input" />
+                tabindex="2"
+                aria-controls="sliderOutputNonLinear"
+              ></span>
+              <!--span class="slider-fill" data-slider-fill />
+              <input type="hidden" class="slider-input" /-->
             </div>
           </div>
           <div class="cell small-2">
-            <input v-model="dataValue" type="number" />
+            <input id="sliderOutputNonLinear" v-model="dataValue" type="number" />
           </div>
         </div>
       </div>
