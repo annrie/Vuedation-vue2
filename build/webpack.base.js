@@ -18,7 +18,7 @@ function resolve(dir) {
 module.exports = {
   context: resolve(''),
   entry: {
-    app: './src/main.js',
+    app: resolve('src') + '/main.js',
   },
   output: {
     path: resolve('dist'),
@@ -169,13 +169,19 @@ module.exports = {
       template: 'index.html',
       inject: true,
     }),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: '',
-        ignore: ['.*'],
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: resolve('static'),
+          to: '',
+          // context: './static',
+          globOptions: {
+            dot: false,
+          },
+        },
+        // ignore: ['.*'],
+      ],
+    }),
   ],
   // ローカル開発用環境を立ち上げる
   // 実行時にブラウザが自動的に localhost を開く

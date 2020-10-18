@@ -22,9 +22,7 @@
                 <li><a href="#third">Third Section</a></li>
                 <li class="menu-text">window width: {{ windowWidth }} px</li>
                 <li class="menu-text">window height: {{ windowHeight }} px</li>
-                <li class="menu-text">
-                  amount of scrolling: {{ windowPageYOffset }} px
-                </li>
+                <li class="menu-text">amount of scrolling: {{ windowPageYOffset }} px</li>
               </ul>
             </div>
           </div>

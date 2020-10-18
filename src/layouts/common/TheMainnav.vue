@@ -32,11 +32,7 @@
       <nav class="top-bar-left" aria-label="Main menu" tabindex="-1">
         <ul id="dropDown" class="dropdown menu desktop-menu" data-dropdown-menu>
           <template v-for="menu in getAll">
-            <li
-              v-if="menu.sub"
-              :key="menu.id"
-              class="is-dropdown-submenu-parent"
-            >
+            <li v-if="menu.sub" :key="menu.id" class="is-dropdown-submenu-parent">
               <a>{{ menu.category }}</a>
               <ul class="vertical dropdown menu">
                 <li v-for="submenu in menu.sub" :key="submenu.id">

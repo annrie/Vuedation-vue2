@@ -5,26 +5,15 @@
         <h1>{{ msg }}</h1>
       </div>
       <div class="cell">
-        <div
-          id="reveal-dialog"
-          class="reveal"
-          data-reveal
-          data-close-on-click="true"
-        >
+        <div id="reveal-dialog" class="reveal" data-reveal data-close-on-click="true">
           <h1>Awesome. I Have It.</h1>
           <p class="lead">
             Your couch. It is mine.
           </p>
           <p>
-            I'm a cool paragraph that lives inside of an even cooler modal.
-            Wins!
+            I'm a cool paragraph that lives inside of an even cooler modal. Wins!
           </p>
-          <button
-            class="close-button"
-            data-close
-            aria-label="Close modal"
-            type="button"
-          >
+          <button class="close-button" data-close aria-label="Close modal" type="button">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

@@ -9,14 +9,10 @@
       <div class="cell">
         <h1>{{ msg }}</h1>
         <p>
-          This is a demo integration of Foundation for Sites 6.6 in a VueJS 2.6
-          with webpacksingle-page application.
+          This is a demo integration of Foundation for Sites 6.6 in a VueJS 2.6 with
+          webpacksingle-page application.
         </p>
-        <a
-          href="https://jp.vuejs.org/"
-          rel="noopener noreferrer"
-          class="hollow button radius"
-        >
+        <a href="https://jp.vuejs.org/" rel="noopener noreferrer" class="hollow button radius">
           <i class="fab fa-vuejs"></i>
           Vue Document (jp)
         </a>

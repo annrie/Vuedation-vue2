@@ -6,12 +6,7 @@
     data-off-canvas
     aria-lavel="Mobile menu"
   >
-    <button
-      class="close-button"
-      aria-label="Close menu"
-      type="button"
-      data-close
-    >
+    <button class="close-button" aria-label="Close menu" type="button" data-close>
       <span aria-hidden="true">&times;</span>
     </button>
     <ul
@@ -24,20 +19,11 @@
       data-scroll-top="true"
     >
       <template v-for="menu in getAll">
-        <li
-          v-if="menu.sub"
-          :key="menu.id"
-          class="is-drilldown-submenu-parent"
-          data-open
-        >
+        <li v-if="menu.sub" :key="menu.id" class="is-drilldown-submenu-parent" data-open>
           <a>{{ menu.category }}</a>
           <ul class="vertical dropdown menu">
             <li v-for="submenu in menu.sub" :key="submenu.id">
-              <router-link
-                :to="submenu.link"
-                :exact="submenu.link == '/'"
-                data-close
-              >
+              <router-link :to="submenu.link" :exact="submenu.link == '/'" data-close>
                 {{ submenu.category }}
               </router-link>
             </li>

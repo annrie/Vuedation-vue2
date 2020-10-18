@@ -1,11 +1,6 @@
 <template>
   <div id="app">
-    <nav
-      id="skip-links"
-      class="skip-links"
-      aria-label="Skip links"
-      data-smooth-scroll
-    >
+    <nav id="skip-links" class="skip-links" aria-label="Skip links" data-smooth-scroll>
       <a class="screen-reader-text" href="#main">Skip to content</a>
       <a class="screen-reader-text" href="#menu">Skip to navigation</a>
     </nav>
@@ -96,13 +91,9 @@
         // メタタグdescription設定
         if (to.meta.desc) {
           let setDesc = to.meta.desc
-          document
-            .querySelector("meta[name='description']")
-            .setAttribute('content', setDesc)
+          document.querySelector("meta[name='description']").setAttribute('content', setDesc)
         } else {
-          document
-            .querySelector("meta[name='description']")
-            .setAttribute('content', 'Vuedation')
+          document.querySelector("meta[name='description']").setAttribute('content', 'Vuedation')
         }
       },
     },
@@ -164,8 +155,7 @@
         {
           type: 'text/javascript',
           src: 'https://use.fontawesome.com/releases/v5.8.1/js/all.js',
-          integrity:
-            'sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ',
+          integrity: 'sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ',
           crossorigin: 'anonymous',
           async: true,
           // body内に挿入したい場合は「body: true」を入れましょう

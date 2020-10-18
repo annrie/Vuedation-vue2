@@ -8,12 +8,7 @@
         <button class="button" type="button" data-toggle="dropdown1">
           Toggle Dropdown
         </button>
-        <div
-          id="dropdown1"
-          class="dropdown-pane"
-          data-dropdown
-          data-auto-focus="true"
-        >
+        <div id="dropdown1" class="dropdown-pane" data-dropdown data-auto-focus="true">
           Example form in a dropdown.
           <form>
             <div class="row">

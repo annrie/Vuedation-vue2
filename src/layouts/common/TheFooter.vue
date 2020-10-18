@@ -25,9 +25,7 @@
             <div class="cell medium-shrink medium-order-2">
               <nav aria-label="Privacy menu"></nav>
             </div>
-            <div
-              class="cell medium-auto medium-offset-1 text-center medium-order-1"
-            >
+            <div class="cell medium-auto medium-offset-1 text-center medium-order-1">
               <p>Copyright &copy;{{ year }} vuedation project.</p>
             </div>
           </div>
