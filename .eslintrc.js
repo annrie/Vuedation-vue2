@@ -25,15 +25,15 @@ module.exports = {
       jsx: true,
     },
   },
-  // plugins: ["vue"],
+  plugins: ['vue'],
   extends: [
     'plugin:vue/recommended',
     'eslint:recommended',
-    // '@vue/typescript/recommended',
-    '@vue/prettier',
-    // 'prettier',
-    // 'prettier/vue'
-    // '@vue/prettier/@typescript-eslint',
+    // '@vue/prettier',
+    'prettier/vue',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:prettier/recommended',
   ],
   // required to lint *.vue files
   settings: {
@@ -43,39 +43,50 @@ module.exports = {
   // add your custom rules here
   rules: {
     'vue/component-name-in-template-casing': ['error', 'PascalCase'],
-    // "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    // "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-    // // タグの最後で改行しないで
-    'vue/html-closing-bracket-newline': [0, {multiline: 'never', singleline: 'never'}],
-    // 'vue/html-indent': 'off',
-    // 'vue/valid-v-on': 1,
-    'vue/html-self-closing': 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'import/no-webpack-loader-syntax': 0,
     'vue/one-component-per-file': 0,
-    'prettier/prettier': [
-      'error',
-      {
-        htmlWhitespaceSensitivity: 'ignore',
-        semi: true,
-        singleQuote: true,
-        trailingComma: 'all',
-      },
-    ],
-    'vue/max-attributes-per-line': [
-      'warn',
-      {
-        singleline: 10,
-        multiline: {
-          max: 1,
-          allowFirstLine: false,
-        },
-      },
-    ],
-    'vue/html-indent': [
-      'error',
-      2,
-      {
-        baseIndent: 1,
-      },
-    ],
+    'vue/custom-event-name-casing': 0,
+    'vue/no-arrow-functions-in-watch': 0,
+    'vue/no-custom-modifiers-on-v-model': 0,
+    'vue/no-dupe-v-else-if': 0,
+    'vue/no-multiple-template-root': 0,
+    'vue/no-mutating-props': 0,
+    'vue/no-v-for-template-key': 0,
+    'vue/no-v-model-argument': 0,
+    'vue/experimental-script-setup-vars': 0,
+    //   // タグの最後で改行しないで
+    //   'vue/html-closing-bracket-newline': [0, {multiline: 'never', singleline: 'never'}],
+    //   // 'vue/html-indent': 'off',
+    //   // 'vue/valid-v-on': 1,
+    //   'vue/html-self-closing': 0,
+    //   'vue/one-component-per-file': 0,
+    //   'prettier/prettier': [
+    //     'error',
+    //     {
+    //       htmlWhitespaceSensitivity: 'ignore',
+    //       semi: true,
+    //       singleQuote: true,
+    //       trailingComma: 'all',
+    //     },
+    //   ],
+    //   'vue/max-attributes-per-line': [
+    //     'warn',
+    //     {
+    //       singleline: 10,
+    //       multiline: {
+    //         max: 1,
+    //         allowFirstLine: false,
+    //       },
+    //     },
+    //   ],
+    //   'vue/html-indent': [
+    //     'error',
+    //     2,
+    //     {
+    //       baseIndent: 1,
+    //     },
+    //   ],
   },
 }

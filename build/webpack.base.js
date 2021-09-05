@@ -1,30 +1,39 @@
+'use strict'
+
 const path = require('path')
-// const fs = require('fs');
-// const utils = require('./utils');
-// const config = require('../config');
+const paths = require('./paths')
 const {VueLoaderPlugin} = require('vue-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-// const StyleLintPlugin = require('stylelint-webpack-plugin')
-// const STYLELINT = ['./src/assets/scss/**/*.s?(a|c)ss', '**/*.vue']
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 const devMode = process.env.NODE_ENV !== 'production'
+// const isProductionMode = process.env.NODE_ENV === 'production'
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
+  // mode: isProductionMode ? 'production' : 'development',
   context: resolve(''),
   entry: {
-    app: resolve('src') + '/main.js',
+    app: './src/main.js',
+    style: './src/assets/scss/app.scss',
+    // Runtime code for hot module replacement
+    // hot: 'webpack/hot/dev-server.js',
+    // Dev server client for web socket transport, hot and live reload logic
+    client: 'webpack-dev-server/client/index.js?hot=true&live-reload=true',
   },
   output: {
     path: resolve('dist'),
+    // path: resolve('dist'),
     filename: devMode ? 'js/[name].js' : 'js/[name].[chunkhash].js',
     chunkFilename: devMode ? 'js/[name].js' : 'js/[name].[chunkhash].js',
-    publicPath: './',
+    assetModuleFilename: 'img/[hash][ext]',
+    publicPath: 'auto',
+    clean: true,
   },
   // devtool: 'inline-source-map', // ブラウザでのデバッグ用にソースマップを出力する
   resolve: {
@@ -32,46 +41,65 @@ module.exports = {
     modules: [resolve('src'), resolve('node_modules')],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
+      assets: path.resolve(__dirname, '../src/assets/'),
       '@': resolve('src'),
       zf: 'foundation-sites/js',
     },
     symlinks: false,
   },
-
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
   optimization: {
+    chunkIds: 'named',
+    runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'async',
-      name: true,
+      // chunks: 'all',
+      // minSize: 30000,
+      // minRemainingSize: 0,
+      // maxSize: 0,
+      // minChunks: 1,
+      maxAsyncRequests: 6,
+      maxInitialRequests: 4,
+      automaticNameDelimiter: '~',
       cacheGroups: {
-        common: {
-          name: 'common',
-          chunks: 'initial',
-          minChunks: 2,
-        },
-        vendor: {
-          name: 'vendor',
-          test: /[\\/]node_modules[\\/]/,
-          chunks: 'all',
-        },
+        default: false,
+        // common: {
+        //   name: 'common',
+        //   chunks: 'initial',
+        //   minChunks: 2,
+        // },
+        defaultVendor: false,
+        // name: 'vendor',
+        // test: /[\\/]node_modules[\\/]/,
+        // chunks: 'all',
+        // },
       },
     },
   },
 
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter'),
-        },
-      },
+      // {
+      //   enforce: 'pre',
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   include: [resolve('src'), resolve('test')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter'),
+      //   },
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
+          loaders: {
+            scss: 'vue-style-loader!css-loader!sass-loader', // <style lang="scss">
+            sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax', //<style lang="sass">
+          },
           prettify: false,
           transformAssetUrls: {
             video: ['src', 'poster'],
@@ -83,7 +111,13 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: require.resolve('babel-loader'),
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            // プリセットを指定することで、ES2020 を ES5 に変換
+            '@babel/preset-env',
+          ],
+        },
         include: [
           resolve('src'),
           resolve('test'),
@@ -94,6 +128,7 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
+          // isProductionMode ? MiniCssExtractPlugin.loader : 'vue-style-loader',
           'vue-style-loader',
           {
             loader: 'css-loader',
@@ -102,12 +137,16 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              // sourceMap: true,
-              plugins: [
-                require('autoprefixer')({
-                  grid: true,
-                }),
-              ],
+              sourceMap: true,
+              postcssOptions: {
+                ident: 'postcss',
+                syntax: 'postcss-scss',
+                plugins: [
+                  require('postcss-preset-env'),
+                  require('postcss-import'),
+                  require('autoprefixer'),
+                ],
+              },
             },
           },
           {
@@ -117,8 +156,12 @@ module.exports = {
               sassOptions: {
                 // data: "@import './src/styles/app';",
                 // sourceMap: true,
+                fiber: require('fibers'),
+                implementation: require.resolve('sass'),
                 includePaths: ['./src/assets/scss'],
+                outputStyle: 'compressed',
               },
+              sourceMap: true,
             },
           },
           {
@@ -131,10 +174,11 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
+        loader: 'file-loader',
         options: {
-          limit: 10000,
-          name: 'img/[name].[hash:7].[ext]',
+          // limit: 10000,
+          // name: './img/[name].[contenthash:7].[ext]',
+          type: 'asset/resource',
         },
       },
       {
@@ -142,7 +186,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'media/[name].[hash:7].[ext]',
+          name: 'media/[name].[contenthash:7].[ext]',
         },
       },
       {
@@ -150,44 +194,54 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'fonts/[name].[hash:7].[ext]',
+          name: 'fonts/[name].[contenthash:7].[ext]',
         },
       },
     ],
   },
   plugins: [
     new VueLoaderPlugin(),
+    new ESLintPlugin(),
+    new FriendlyErrorsWebpackPlugin(),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
+      // filename: 'css/[name].css',
       filename: devMode ? 'css/[name].css' : 'css/[name].[contenthash].css',
+      // chunkFilename: 'css/[id].css',
       chunkFilename: devMode ? 'css/[id].css' : 'css/[id].[contenthash].css',
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
+      template: paths.src + '/index.html', // template file
+      filename: 'index.html', // output file
       inject: true,
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: resolve('static'),
-          to: '',
-          // context: './static',
+          from: paths.public,
+          to: 'assets',
           globOptions: {
-            dot: false,
+            ignore: ['*.DS_Store'],
           },
         },
-        // ignore: ['.*'],
       ],
     }),
+    // {
+    //   from: path.resolve(__dirname, '../static'),
+    //   to: '',
+    //   ignore: ['.*'],
+    // },
+    // ]),
+    // new StyleLintPlugin({
+    //   files: STYLELINT,
+    //   syntax: 'scss',
+    //   // fix: true
+    // })
   ],
-  // ローカル開発用環境を立ち上げる
-  // 実行時にブラウザが自動的に localhost を開く
-  // devServer: {
-  //   contentBase: 'dist',
-  //   inline: true,
-  //   open: true,
-  // },
+  watchOptions: {
+    ignored: /node_modules/,
+  },
+  target: ['web', 'es5'],
 }

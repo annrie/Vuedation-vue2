@@ -2,41 +2,41 @@ plugins:
   - stylelint-scss
   - stylelint-declaration-block-no-ignored-properties
 extends:
-  - stylelint-config-standard-scss
+  - stylelint-config-recommended-scss
   - stylelint-config-recess-order
-  - stylelint-config-prettier
   - stylelint-prettier/recommended
 syntax:
   - scss
 rules:
-  indentation: [2, { baseIndentLevel: 0 }]
+  indentation: [2, {baseIndentLevel: 0}]
+  # at-rule-no-unknown: null
   # scss/dollar-variable-colon-space-after: always
   scss/dollar-variable-colon-space-before: never
   scss/operator-no-unspaced: true
   scss/at-rule-no-unknown: true
-  # at-rule-no-unknown: null
   at-rule-whitelist:
     [
-      "extend",
-      "keyframes",
-      "import",
-      "include",
-      "charset",
-      "font-face",
-      "content",
-      "mixin",
-      "if",
-      "else",
-      "media",
-      "for",
-      "at-root",
-      "supports",
-      "function",
-      "return",
-      "warn",
-      "get-color",
-      "scale-color",
-      "each",
+      'extend',
+      'keyframes',
+      'import',
+      'include',
+      'charset',
+      'font-face',
+      'content',
+      'mixin',
+      'if',
+      'else',
+      'media',
+      'for',
+      'at-root',
+      'supports',
+      'function',
+      'return',
+      'warn',
+      'get-color',
+      'scale-color',
+      'each',
+      'use',
     ]
   at-rule-no-unknown: null
   at-rule-no-vendor-prefix: true # @ルールのベンタープリフィックス禁止
@@ -46,7 +46,7 @@ rules:
   media-feature-name-no-vendor-prefix: true # '@media'内のベンダープリフィックス禁止
   no-descending-specificity: null # 詳細度の高いセレクタより後に詳細度の低いセレクタを定義するのを許容
   property-no-vendor-prefix: null
-  # selector-attribute-quotes: never # '[type=text]'などのセレクタの属性はクオートで囲まない
+  selector-attribute-quotes: never # '[type=text]'などのセレクタの属性はクオートで囲まない
   selector-no-vendor-prefix: true # セレクタのベンダープリフィックス禁止
   string-quotes: single # 文字列はシングルクオートで囲む
   value-no-vendor-prefix: null # 値のベンダープリフィックス禁止
@@ -72,7 +72,7 @@ rules:
       },
     ]
   custom-property-empty-line-before:
-    [always, { except: [after-comment, after-custom-property, first-nested] }]
+    [always, {except: [after-comment, after-custom-property, first-nested]}]
   declaration-empty-line-before:
     [
       always,
@@ -84,25 +84,21 @@ rules:
   block-opening-brace-space-before: always # 単一行で閉じ括弧前に空白を必須
   block-opening-brace-space-after: always-single-line #単一行の時に閉じ括弧後に空白を必須
   block-closing-brace-empty-line-before: never
-  selector-type-no-unknown: [
-    true,
-    { ignoreTypes: ['_', 'x']}
-  ]
   rule-empty-line-before: never
   function-max-empty-lines: 0
   max-empty-lines: 1
   selector-max-empty-lines: 0
-  at-rule-blacklist: ["debug"]
+  at-rule-disallowed-list: ['debug']
   # declaration-property-value-blacklist: [{'/^border/': ['none']}]
   declaration-property-value-blacklist: null
   color-named: null
   color-no-hex: null
   color-no-invalid-hex: true
   # function-blacklist: ["/^rgb/", "/^hsl/"]
-  function-whitelist:
+  function-allowed-list:
     [
-      "my-color",
-      "/^rem/",
+      'my-color',
+      '/^rem/',
       /scale/,
       /^get/,
       /^rgb*/,
@@ -119,17 +115,15 @@ rules:
       /floor/,
       /z/,
       /rect/,
-      /translate3d/,
-      /translateY/,
-      /translateX/,
-      /translate3d/,
+      /translate/,
       /calc/,
       /map-merge/,
-      /translate/,
+      'math.div',
+      'divide',
     ]
-  unit-whitelist:
-    ["em", "rem", "%", "s", "ms", "vh", "vw", "px", "deg", "dpi", "fr", "vmin", "turn"]
-  selector-pseudo-class-no-unknown: [true, { ignorePseudoClasses: [global] }]
+  unit-allowed-list:
+    ['em', 'rem', '%', 's', 'ms', 'vh', 'vw', 'px', 'deg', 'dpi', 'fr', 'vmin', 'turn']
+  selector-pseudo-class-no-unknown: [true, {ignorePseudoClasses: [global]}]
   declaration-no-important: null
   font-family-no-duplicate-names: true
   function-calc-no-invalid: true
