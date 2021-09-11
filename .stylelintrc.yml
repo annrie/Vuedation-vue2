@@ -1,6 +1,7 @@
 plugins:
   - stylelint-scss
   - stylelint-declaration-block-no-ignored-properties
+  - stylelint-prettier
 extends:
   - stylelint-config-recommended-scss
   - stylelint-config-recess-order
@@ -14,7 +15,7 @@ rules:
   scss/dollar-variable-colon-space-before: never
   scss/operator-no-unspaced: true
   scss/at-rule-no-unknown: true
-  at-rule-whitelist:
+  at-rule-allowed-list:
     [
       'extend',
       'keyframes',
@@ -90,7 +91,7 @@ rules:
   selector-max-empty-lines: 0
   at-rule-disallowed-list: ['debug']
   # declaration-property-value-blacklist: [{'/^border/': ['none']}]
-  declaration-property-value-blacklist: null
+  declaration-property-value-disallowed-list: null
   color-named: null
   color-no-hex: null
   color-no-invalid-hex: true
